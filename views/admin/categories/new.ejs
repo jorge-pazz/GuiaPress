@@ -1,0 +1,21 @@
+<%- include ('../../partials/header.ejs'); %>
+
+
+<div class="cadastro">
+
+    <div class="cadastro_topo">
+        <h3>Cadastro de Categorias</h3>
+    </div>
+        
+
+    <div class="cadastro_baixo">
+        <form action="/categories/save" method="POST">   
+            <input type="text" name="title" placeholder="Defina o titulo da sua categoria">
+            <input type="submit" class="btna" value="Cadastrar">
+
+        </form>
+    </div>
+
+</div>
+
+<%- include ('../../partials/footer.ejs'); %>

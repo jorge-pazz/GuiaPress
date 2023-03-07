@@ -1,0 +1,32 @@
+<%- include ('../../partials/header.ejs'); %>
+
+
+<div class="cadastro">
+
+    <div class="cadastro_topo">
+        <h3>Editar Categoria</h3>
+    </div>
+        
+        
+
+       
+
+
+    <div class="cadastro_baixo">
+
+        <% categories.forEach((categorie) =>{  %>
+
+        <form action="/admin/categories/update" method="POST"> 
+            <input type="hidden" name="id" value="<%= categorie.id %>">  
+            <input type="text" name="title" value="<%= categorie.title %>" placeholder="Defina o titulo da sua categoria">
+            <input type="submit" class="btna" value="Atualizar">
+
+        </form>
+
+        <% }) %>
+
+    </div>
+
+</div>
+
+<%- include ('../../partials/footer.ejs'); %>

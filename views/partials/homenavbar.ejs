@@ -1,0 +1,12 @@
+<ul class="navv">
+
+    <li class="">
+        <a class="nav-link" href="/">Home</a>
+    </li>
+
+    <% categories.forEach((categorie)=>{ %>
+        <li class="">
+            <a class="nav-link" href="/categories/<%= categorie.id %>"><%= categorie.title %></a>             
+        </li>
+    <% }) %>
+</ul>

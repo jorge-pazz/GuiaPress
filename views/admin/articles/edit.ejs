@@ -1,0 +1,78 @@
+<%- include ('../../partials/header.ejs'); %>
+
+
+<div class="cadastro">
+
+    <div class="cadastro_topo">
+        <h3>Editar de Artigo</h3>
+    </div>
+        
+
+    <div class="cadastro_baixo">
+
+
+
+        <form action="/articles/updade" method="POST"> 
+            
+
+            <% articles.forEach((article)=>{ %>
+
+            <input type="hidden" value="<%= article.id %>" name="id">    
+            <input type="text" name="title" value="<%= article.title %>" placeholder="Defina o titulo do seu artigo"><br>
+
+            <br><textarea class="form-control" placeholder="Escreva seu Artigo Aqui!" name="body" id="article"></textarea>
+
+            
+
+            <br><label><strong>Selecione uma categoria</strong></label>
+            <select class="form-control" name="categorie">
+              
+                <% categories.forEach((categorie)=>{ %>
+
+                    <% if(categorie.id == article.categoryId){ %>
+                        <option value="<%= categorie.id %>" selected><%= categorie.title %></option>  
+                    <% }else{ %>
+                        <option value="<%= categorie.id %>"><%= categorie.title %></option>  
+                    <% } %>
+
+               
+                <% }) %>
+
+                <% }) %>
+
+            </select>
+
+            <br><input type="submit" class="btna" value="Atualizar">
+      
+            
+
+        </form>
+    </div>
+
+</div>
+
+<div id="content" style="display: none;">
+    <% articles.forEach((article)=>{ %>
+        <%- article.body %>
+    <% }) %>
+</div>
+
+<script src="/tinymce/tinymce.min.js"></script>
+<script>
+
+    tinymce.init({
+        language : 'pt_BR',
+        selector: '#article',
+        plugins: [
+        'advlist','autolink','link','imagem','lists','print',
+        'preview','hr', 'searchreplace','wordcount','fullscreen',
+         'insertdatetime','media', 'save','table','paste','emoticons'
+        ],
+        init_instance_callback: ()=>{
+            tinymce.get("article").setContent($("#content").html())
+        }
+    })
+
+</script>
+
+<%- include ('../../partials/footer.ejs'); %>
